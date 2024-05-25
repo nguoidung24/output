@@ -16,9 +16,27 @@
                 <div
                     class="navLinks duration-500 absolute md:static md:w-auto w-full md:h-auto h-[85vh] bg-white flex md:items-center gap-[1.5vw] top-[100%] left-[-100%] px-5 md:py-0 py-5 ">
                     <ul class="flex md:flex-row flex-col md:items-center md:gap-[2vw] gap-8">
-                        <li v-for="(item, index) in dataMenu" :key="index"
+                        <li
                             class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
-                            <a @click="handleClickMenu(item.link)" class="hover:cursor-pointer">{{ item.text }}</a>
+                            <NuxtLink to="/">Trang chủ</NuxtLink>
+                        </li>
+                        <li
+                            class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                            <NuxtLink to="/products">Sản phẩm</NuxtLink>
+
+                        </li>
+                        <li
+                            class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                            <NuxtLink to="/test">Courses</NuxtLink>
+
+                        </li>
+                        <li
+                            class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                            <NuxtLink to="/products">Về chúng tôi</NuxtLink>
+                        </li>
+                        <li
+                            class="relative max-w-fit pr-3 md:pr-0 py-1 after:bg-gradient-to-r from-[#2b68e0] to-[#e710ea]  after:absolute after:h-1 after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300">
+                            <a href="#">Liên hệ chúng tôi</a>
                         </li>
                     </ul>
                 </div>
@@ -69,8 +87,7 @@
                 },
             }">
                 <div class="relative">
-                    <p
-                        class="text-center text-white font-semibold text-2xl w-full absolute -top-full left-2/4 -translate-x-2/4">
+                    <p class="text-center text-white font-semibold text-2xl w-full absolute -top-full left-2/4 -translate-x-2/4">
                         Samseng Sẽ Giúp Bạn Tìm Kiếm
                     </p>
                     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -80,13 +97,11 @@
                                 d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input v-model="searchValue" type="search" id="default-search"
+                    <input type="search" id="default-search"
                         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="Bạn cần tìm gì..." required />
-                    <button @click="handleToSearch()"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        Tìm
-                    </button>
+                    <button type="submit"
+                        class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Tìm</button>
                 </div>
             </div>
 
@@ -95,36 +110,17 @@
 </template>
 
 <script lang="js">
-const dataMenu = [
-    {
-        text: "Trang chủ",
-        link: "/",
-    },
-    {
-        text: "Sản phẩm",
-        link: "/products",
-    },
-    {
-        text: "Về chúng tôi",
-        link: "/",
-    },
-    {
-        text: "Liên hệ với chúng tôi",
-        link: "/",
-    }
-]
+
 export default defineNuxtComponent({
     data() {
         return {
             isSearch: false,
-            searchValue: "",
-            dataMenu
         }
     },
     methods: {
         onMenuToggle(e) {
-            // e.name = e.name === "menu" ? "close" : "menu";
             const navlinks = document.querySelector(".navLinks");
+            // e.name = e.name === "menu" ? "close" : "menu";
             navlinks.classList.toggle("left-[0%]");
         },
         goToHome() {
@@ -132,13 +128,6 @@ export default defineNuxtComponent({
         },
         handleSearch() {
             this.isSearch = !this.isSearch;
-        },
-        handleToSearch() {
-            this.$router.push(`/products?search=${this.searchValue}`);
-        },
-        handleClickMenu(link) {
-            this.onMenuToggle();
-            this.$router.push(link);
         }
 
     },
