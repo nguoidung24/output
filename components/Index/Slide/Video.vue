@@ -8,12 +8,12 @@
                 <div class="mt-8">
                     <p class=" lg:text-xl text-lg" v-for="(item, index) in data?.text?.split('$tach_ra$')">{{ item }}</p>
                 </div>
-                <button class="mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <NuxtLink to="/product/1" class="inline-block mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </button>
+                </NuxtLink>
             </div>
             <video autoplay muted loop name="media">
-                <source :src="data?.image?.split('$tach_ra$')[0]" type="video/webm">
+                <source :src="baseImageURL + data?.image?.split('$tach_ra$')[0]" type="video/webm">
             </video>
 
         </div>
@@ -26,21 +26,20 @@
                     <p class=" text-lg " v-for="(item, index) in data?.text?.split('$tach_ra$')">{{ item }}</p>
                 </div>
 
-                <button class="mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <NuxtLink to="/product/1" class="inline-block mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </button>
+                </NuxtLink>
             </div>
             <video autoplay muted loop name="media">
-                <source :src="data?.image?.split('$tach_ra$')[1]" type="video/webm">
+                <source :src="baseImageURL + data?.image?.split('$tach_ra$')[1]" type="video/webm">
             </video>
         </div>
     </div>
 </template>
 <script>
 export default defineNuxtComponent({
-    props: ['data'],
+    props: ['data','baseImageURL'],
     created() {
-
     },
 
 })

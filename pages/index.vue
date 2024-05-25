@@ -14,13 +14,13 @@
         }" v-if="!isLoading">
             <IndexSlide :dataSlide="dataIndexSlider" />
 
-            <IndexOutstandingProduct />
+            <IndexOutstandingProduct :dataTab="dataIndexOutstandingProducts" />
 
-            <IndexMonopolyProduct />
+            <IndexMonopolyProduct :dataIndexMonopolyProducts="dataIndexMonopolyProducts" />
 
-            <IndexBigSlide />
+            <IndexBigSlide :dataBigSlider="dataBigSlider" />
 
-            <IndexSuggestedProducts />
+            <IndexSuggestedProducts :dataSuggestedProducts="dataSuggestedProducts" header="Gợi ý dành cho bạn" />
         </div>
         <!-- ================================== END ================================== -->
 
@@ -43,16 +43,26 @@ export default defineNuxtComponent({
     data() {
         return {
             dataIndexOutstandingProducts: null,
+            dataIndexMonopolyProducts: null,
+            dataSuggestedProducts: null,
             dataIndexSlider: null,
+            dataBigSlider: null,
             isLoading: true,
         }
     },
     async created() {
         const dataIndexSlider = (await useSlider()).value;
-        this.dataIndexSlider = dataIndexSlider.listProducts.data;
+        this.dataIndexSlider = dataIndexSlider.listProducts.data.filter((item) => item.type != 'big-slider');
+        this.dataBigSlider = dataIndexSlider.listProducts.data.filter((item) => item.type == 'big-slider');
 
         const dataIndexOutstandingProducts = (await useOutstandingProducts()).value;
         this.dataIndexOutstandingProducts = dataIndexOutstandingProducts.listOutstandingProducts.data
+
+        const dataIndexMonopolyProducts = (await useMonopolyProducts()).value;
+        this.dataIndexMonopolyProducts = dataIndexMonopolyProducts.listMonopolyProducts.data
+
+        const dataSuggestedProducts = (await useSuggestedProducts()).value;
+        this.dataSuggestedProducts = dataSuggestedProducts.listSuggestedProducts.data
 
         this.isLoading = false;
     }
