@@ -3,10 +3,6 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['~/assets/css/main.css'],
   modules: ['@vueuse/motion/nuxt'],
-  ssr:true,
-  nitro:{
-    preset: 'aws-lambda'
-  },
   runtimeConfig: {
     public: {
       motion: {

@@ -1,5 +1,5 @@
 <template>
-    <div v-if="baseImageURL && data">
+    <div>
         <!-- ================================= DESKTOP ========================================= -->
         <div class="relative justify-center --- lg:flex md:flex hidden">
             <div class="absolute top-2/4 lg:left-16 left-5 -translate-y-2/4 z-50 text-left lg:max-w-80 max-w-56">
@@ -9,12 +9,12 @@
                     <p class=" lg:text-xl text-lg" v-for="(item, index) in data?.text?.split('$tach_ra$')">{{ item }}
                     </p>
                 </div>
-                <NuxtLink to="/product/1" class="inline-block mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <button class="mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </NuxtLink>
+                </button>
             </div>
             <figure>
-                <img :src="baseImageURL + data?.image?.split('$tach_ra$')[0]" alt="">
+                <img :src="data?.image?.split('$tach_ra$')[0]" alt="">
             </figure>
         </div>
         <!-- ================================= MOBILE ========================================= -->
@@ -27,21 +27,22 @@
                     <p class=" text-lg " v-for="(item, index) in data?.text?.split('$tach_ra$')">{{ item }}</p>
                 </div>
 
-                <NuxtLink to="/product/1" class="inline-block mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <button class="mt-8 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </NuxtLink>
+                </button>
 
             </div>
             <figure class="w-full">
-                <img class="w-full" :src="baseImageURL + data?.image?.split('$tach_ra$')[1]" alt="">
+                <img class="w-full" :src="data?.image?.split('$tach_ra$')[1]" alt="">
             </figure>
         </div>
     </div>
 </template>
 <script>
 export default defineNuxtComponent({
-    props: ['data','baseImageURL'],
+    props: ['data'],
     created() {
+
     },
 
 })

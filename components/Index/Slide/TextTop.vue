@@ -1,5 +1,5 @@
 <template>
-    <div v-if="baseImageURL && data">
+    <div>
         <!-- ================================= DESKTOP ========================================= -->
         <div class="relative justify-center --- lg:flex md:flex hidden">
             <div class="absolute lg:top-28 top-5 left-2/4 -translate-x-2/4 z-50 text-center w-full">
@@ -11,12 +11,12 @@
                     <p class="mt-3 text-lg" v-for="(item, index ) in data?.text?.split('$tach_ra$')" key="index">{{ item }}</p>
                 </div>
 
-                <NuxtLink to="/product/1169673124" class="inline-block mt-6 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <button class="mt-6 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </NuxtLink>
+                </button>
             </div>
             <figure>
-                <img :src="baseImageURL+data?.image?.split('$tach_ra$')[0]" alt="">
+                <img :src="data?.image?.split('$tach_ra$')[0]" alt="">
 
             </figure>
         </div>
@@ -30,20 +30,21 @@
                 <div>
                     <p class="mt-5 text-lg" v-for="(item, index ) in data?.text?.split('$tach_ra$')">{{ item }}</p>
                 </div>
-                <NuxtLink to="/product/1169673124" class="inline-block mt-10 bg-black text-white rounded-3xl px-5 py-2 font-mono">
+                <button class="mt-10 bg-black text-white rounded-3xl px-5 py-2 font-mono">
                     {{ data?.button }}
-                </NuxtLink>
+                </button>
             </div>
             <figure class="w-full">
-                <img class="w-full" :src="baseImageURL+data?.image?.split('$tach_ra$')[1]" alt="">
+                <img class="w-full" :src="data?.image?.split('$tach_ra$')[1]" alt="">
             </figure>
         </div>
     </div>
 </template>
 <script>
 export default defineNuxtComponent({
-    props: ['data','baseImageURL'],
+    props: ['data'],
     created() {
+
     },
 
 })
