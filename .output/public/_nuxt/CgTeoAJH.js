@@ -1,0 +1,1 @@
+import{_ as o,w as e,c,r as i,o as a}from"./DTcdeyfU.js";const n={layout:"no-layout"},s={initial:{opacity:0,y:100},enter:{opacity:1,y:0},leave:{y:-100,opacity:0}};function r(_,l,p,u,y,d){const t=i("motion");return e((a(),c("div",s,null,512)),[[t]])}const m=o(n,[["render",r]]);export{m as default};

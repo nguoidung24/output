@@ -1,0 +1,1 @@
+import{L as s}from"./DTcdeyfU.js";const b=s("website",{state:()=>({webData:{testData:"test_data"}}),actions:{setWebData({key:t,value:a}){let e={};e[t]=a,this.webData=Object.assign({},this.webData,e)},getWebData(t){return t in this.webData?this.webData[t]:null}}});export{b as u};
